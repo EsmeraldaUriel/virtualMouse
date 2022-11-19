@@ -33,7 +33,7 @@ while True:
                     thumb_y = screen_height / frame_height * y
                     print('outside', abs(index_y - thumb_y))
                     if abs(index_y - thumb_y) < 20:
-                        print('click')
-
+                        pyautogui.click()
+                        pyautogui.sleep(1)
     cv2.imshow('Virtual Mouse', frame)
     cv2.waitKey(1)
