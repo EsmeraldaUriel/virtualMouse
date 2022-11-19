@@ -7,6 +7,8 @@ drawing_utils = mp.solutions.drawing_utils
 
 while True:
     _, frame = cap.read()
+    frame = cv2.flip(frame, 1)
+    frame_height, frame_width, _ = frame.shape
     rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
     output = hand_detector.process(rgb_frame)
     hands = output.multi_hand_landmarks
@@ -15,8 +17,8 @@ while True:
             drawing_utils.draw_landmarks(frame, hand)
             landmarks = hand.landmark
             for id, landmark in enumerate(landmarks):
-                x = landmark.x
-                y = landmark.y
+                x = landmark.x*frame_width
+                y = landmark.y*frame_height
                 print(x, y)
 
 
