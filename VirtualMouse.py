@@ -1,6 +1,7 @@
 import cv2
 cap = cv2.VideoCapture(0)
+
 while True:
     _, frame = cap.read()
     cv2.imshow('Virtual Mouse', frame)
-    cv2.waitKery(1)
+    cv2.waitKey(1)
