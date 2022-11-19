@@ -22,7 +22,6 @@ while True:
             for id, landmark in enumerate(landmarks):
                 x = int(landmark.x*frame_width)
                 y = int(landmark.y*frame_height)
-                print(x, y)
                 if id == 8:
                     cv2.circle(img=frame, center=(x,y), radius=10, color=(0, 255, 255))
                     index_x = screen_width/frame_width*x
@@ -32,6 +31,9 @@ while True:
                     cv2.circle(img=frame, center=(x, y), radius=10, color=(0, 255, 255))
                     thumb_x = screen_width / frame_width * x
                     thumb_y = screen_height / frame_height * y
+                    print('outside', abs(index_y - thumb_y))
+                    if abs(index_y - thumb_y) < 20:
+                        print('click')
 
     cv2.imshow('Virtual Mouse', frame)
     cv2.waitKey(1)
